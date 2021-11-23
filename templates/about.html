@@ -3,4 +3,23 @@
 {% block content %}
     <h2>About page</h2>
     <p>This is a template</p>
+
+    <p>
+        <!-- context variable -->
+        {{my_text}},
+        {{my_number}},
+    </p>
+
+    <ul>
+        {% for item in my_list %}
+            {% if item == 19 %}
+                <li>{{forloop.counter}} - {{item|add:30}}</li> <!-- item|add builtin template filter -->
+            {% elif item == 'ABC' %}
+                <li>This is not the network</li>
+            {% else %}
+                <li>{{forloop.counter }} - {{ item }} </li>
+            {% endif %}
+        {% endfor %}
+    </ul>
+
 {% endblock content %}
