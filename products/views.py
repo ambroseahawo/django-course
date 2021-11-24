@@ -11,6 +11,7 @@ def product_create_view(request):
             # now the form is good
             print(my_form.cleaned_data)
             Product.objects.create(**my_form.cleaned_data)
+            my_form = RawProductForm()
         else:
             print(my_form.errors)
     context = {
