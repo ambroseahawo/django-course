@@ -29,13 +29,30 @@ from .forms import ProductForm, RawProductForm
 #     return render(request, 'products/product_create.html', context)
 
 
-def product_create_view(request):
-    form = ProductForm(request.POST or None)
+# def product_create_view(request):
+#     form = ProductForm(request.POST or None)
+#     if form.is_valid():
+#         form.save()
+#         form = ProductForm()
+
+#     context ={ 'form': form }
+
+#     return render(request, "products/product_create.html", context)
+
+
+def render_initial_data(request):
+    initial_data = {
+        'title': 'Awesome title'
+    }
+    obj = Product.objects.get(id=1)
+    form = ProductForm(request.POST or None, instance=obj)
+
     if form.is_valid():
         form.save()
-        form = ProductForm()
 
-    context ={ 'form': form }
+    context = {
+        'form': form
+    }
 
     return render(request, "products/product_create.html", context)
 
