@@ -57,13 +57,20 @@ def render_initial_data(request):
     return render(request, "products/product_create.html", context)
 
 
-def product_detail_view(request):
-    obj = Product.objects.get(id=1)
-    # context = {
-    #     'title': obj.title,
-    #     'description': obj.description
-    # }
+def dynamic_lookup_view(request, pk):
+    obj = Product.objects.get(id=pk)
     context = {
-        'object': obj
+        "object": obj
     }
     return render(request, "products/product_detail.html", context)
+
+# def product_detail_view(request):
+#     obj = Product.objects.get(id=1)
+#     # context = {
+#     #     'title': obj.title,
+#     #     'description': obj.description
+#     # }
+#     context = {
+#         'object': obj
+#     }
+#     return render(request, "products/product_detail.html", context)
