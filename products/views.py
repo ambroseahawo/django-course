@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from .models import Product
 from .forms import ProductForm, RawProductForm
 
@@ -58,7 +58,8 @@ def render_initial_data(request):
 
 
 def dynamic_lookup_view(request, pk):
-    obj = Product.objects.get(id=pk)
+    # obj = Product.objects.get(id=pk)
+    obj = get_object_or_404(Product, id=pk)
     context = {
         "object": obj
     }
