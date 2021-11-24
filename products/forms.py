@@ -22,10 +22,12 @@ class ProductForm(forms.ModelForm):
     def clean_title(self, *args, **kwargs):
         title = self.cleaned_data.get("title")
 
-        if "XTER" in title:
-            return title
-        else:
-            raise forms.ValidationError("Your title should contain the chosen word")
+        return title.capitalize()
+
+        # if "XTER" in title:
+        #     return title
+        # else:
+        #     raise forms.ValidationError("Your title should contain the chosen word")
         
 
 
