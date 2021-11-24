@@ -22,10 +22,7 @@ def product_create_view(request):
     return render(request, "products/product_create.html", context)
 
 
-def product_edit_view(request, pk):
-    initial_data = {
-        'title': 'Awesome title'
-    }
+def product_update_view(request, pk):
     obj = Product.objects.get(id=pk)
     form = ProductForm(request.POST or None, instance=obj)
 
@@ -38,8 +35,7 @@ def product_edit_view(request, pk):
     return render(request, "products/product_edit.html", context)
 
 
-def dynamic_lookup_view(request, pk):
-    # obj = Product.objects.get(id=pk)
+def product_detail_view(request, pk):
     obj = get_object_or_404(Product, id=pk)
     context = { "object": obj }
     return render(request, "products/product_detail.html", context)
