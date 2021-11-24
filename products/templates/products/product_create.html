@@ -8,7 +8,7 @@
     </form> -->
 
     <form action="." method="post"> {% csrf_token %}
-        <input type="text" name="title" placeholder="Product title">
+        {{ form.as_p }}
         <input type="submit" value="Save">
     </form>
 {% endblock content %}
